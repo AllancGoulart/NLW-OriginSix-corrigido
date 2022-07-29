@@ -79,7 +79,7 @@ body {
   height: 1px;
   background: linear-gradient(
     270deg,
-    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 36%, 57%, 1),
     hsla(var(--hue), 65%, 88%, 0.34) 100%
   );
 }
@@ -117,7 +117,7 @@ body {
 }
 
 .section header {
-  margin-bottom: 40rem;
+  margin-bottom: 4rem;
 }
 
 .section header strong {
@@ -130,15 +130,15 @@ body {
   display: flex;
 
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
-  z-index: 100;
   background-color: var(--body-color);
   width: 100%;
 }
 
 #header.scroll {
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15); /* EDITAR AQUI*/
 }
 
 /*==== LOGO ==================*/
@@ -168,20 +168,28 @@ nav ul li {
   text-align: center;
 }
 
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.2s;
+}
+
 nav ul li a {
   transition: color 0.2s;
   position: relative;
+  top: 0;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
   color: var(--base-color);
 }
-
+/* Linha abaixo do menu */
 nav ul li a::after {
-  content: '';
-  width: 0;
-  height: 2px;
+  content: "";
+  width: 0%;
+  height: 3px;
   background: var(--base-color);
 
   position: absolute;
@@ -196,12 +204,6 @@ nav ul li a.active::after {
   width: 100%;
 }
 
-nav .menu {
-  opacity: 0;
-  visibility: hidden;
-  top: -20rem;
-  transition: 0.2s;
-}
 
 nav .menu ul {
   display: none;
@@ -271,7 +273,7 @@ nav.show div.icon-close {
 }
 
 #home .image::before {
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
@@ -287,7 +289,7 @@ nav.show div.icon-close {
 }
 
 #home .image img,
-#home .image::before {
+#home image::before {
   border-radius: 0.25rem;
 }
 
@@ -298,7 +300,7 @@ nav.show div.icon-close {
 }
 
 #home .text h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 #home .text p {
@@ -319,7 +321,7 @@ nav.show div.icon-close {
 }
 
 #about .image::before {
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
@@ -334,7 +336,7 @@ nav.show div.icon-close {
 }
 
 #about .image img,
-#about .image::before {
+#about image::before {
   border-radius: 0.25rem;
 }
 
@@ -343,6 +345,13 @@ nav.show div.icon-close {
   margin-right: 1.5rem;
 }
 
+#about .text h1 {
+  margin-bottom: 1rem;
+}
+
+#about .text p {
+  margin-bottom: 2rem;
+}
 /*==== SERVICES =================*/
 .cards.grid {
   gap: 1.5rem;
@@ -350,7 +359,7 @@ nav.show div.icon-close {
 
 .card {
   padding: 3.625rem 2rem;
-  box-shadow: 0px 0px 12 px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
   border-bottom: 0.25rem solid var(--base-color);
   border-radius: 0.25rem 0.25rem 0 0;
   text-align: center;
@@ -376,14 +385,12 @@ nav.show div.icon-close {
 #testimonials .container {
   margin-left: 0;
   margin-right: 0;
-  position: relative;
-  overflow: hidden;
 }
 
 #testimonials header {
+  margin-bottom: 0;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  margin-bottom: 0;
 }
 
 #testimonials blockquote {
@@ -425,11 +432,6 @@ nav.show div.icon-close {
 .swiper-slide {
   height: auto;
   padding: 4rem 1rem;
-}
-
-.swiper-pagination-bullet {
-  width: 0.75rem;
-  height: 0.75rem;
 }
 
 .swiper-pagination-bullet-active {
@@ -531,12 +533,11 @@ footer .social a:hover {
 }
 /* ===========Responsivo ============*/
 /*========== MEDIA QUERIES  =====*/
-/* extra large devices: +1200 > */
+/* extra large devices: +1200 > dispositivos maiores que 1200px*/
 @media (min-width: 1200px) {
   /* reusable classes */
   .container {
-    color: var(--text-color);
-    max-width: 1200px;
+    max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -547,7 +548,7 @@ footer .social a:hover {
 
   .section header,
   #testimonials header {
-    max-width: 32rem;
+    max-width: 30rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -603,6 +604,36 @@ footer .social a:hover {
     order: 0;
     max-width: 24rem;
     text-align: left;
+    margin-left: 0;
+    margin-right: 4rem;
+  }
+
+  home .image img {
+    right: 0;
+  }
+
+  /* Mudanças na cor do header ao fazer scroll */
+  #header.scroll {
+    background: var(--base-color);
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s;
+    border-bottom: none;
+  }
+
+  #header.scroll .logo span {
+    color: white;
+  }
+
+  #header.scroll .icon-menu {
+    color: white;
+  }
+
+  #header.scroll nav ul li a {
+    color: white;
+  }
+
+  #header.scroll nav ul li a::after {
+    background: white;
   }
 
   /* about */
