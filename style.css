@@ -4,6 +4,7 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  overflow-x: clip
 }
 
 ul {
@@ -25,7 +26,7 @@ img {
   --header-height: 4.5rem;
 
   /* colors */
-  --hue: 159;
+  --hue: 445;
   /* HSL color mode */
   --base-color: hsl(var(--hue) 36% 57%);
   --base-color-second: hsl(var(--hue) 65% 88%);
